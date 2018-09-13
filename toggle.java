@@ -1,39 +1,25 @@
 import java.util.*;
 class toggle
 {
-
-    public static void main(String[] args)
-    {
-        System.out.println("Enter in a sentence:"); 
-        Scanner input = new Scanner(System.in); 
-        String sentence = input.nextLine();
-        System.out.println("Converted String:" + toggleString(sentence)); 
-        input.close(); 
+   static void convertOpposite(StringBuffer str)
+     {
+        int ln = str.length();
+        for (int i=0; i<ln; i++)
+        {
+            Character c = str.charAt(i);
+            if (Character.isLowerCase(c))
+               str.replace(i,i+1,Character.toUpperCase(c)+"");
+            else
+               str.replace(i,i+1,Character.toLowerCase(c)+"");
+        }
      }
-
-    public static String toggleString(String sentence)
-    {
-       String toggled = ""; 
-       for(int i=0; i<sentence.length(); i++)
-       {
-
-
-           char letter = sentence.charAt(i); 
-
-           if(Character.isUpperCase(sentence.charAt(i)))
-           {
-                letter = Character.toLowerCase(letter); 
-                toggled = toggled + letter; 
-
-           }
-           else if(Character.isLowerCase(sentence.charAt(i)))
-           {
-               letter = Character.toUpperCase(letter);
-               toggled = toggled + letter; 
-           }
-
-       }
-       return toggled; 
-
-   }
-}
+   public static void main(String[] args) 
+     {
+         StringBuffer str=new StringBuffer();
+         Scanner input=new Scanner(System.in);
+         System.out.println("enter any string");
+         str.append(input.nextLine());
+         convertOpposite(str);
+         System.out.println(str);
+     }
+ }
